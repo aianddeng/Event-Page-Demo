@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <Background />
-      <div className="pt-[77px] w-[375px] m-auto">
+      <div className="py-[77px] max-w-[375px] m-auto">
         <Router>
           <Switch>
             <Route path="/" exact component={CardList} />

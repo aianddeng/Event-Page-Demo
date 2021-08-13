@@ -8,12 +8,12 @@ const Infomation = () => {
     <>
       <BackButton />
       <div className="my-[36px]">
-        <h2 className="text-center text-[25.5px] text-[#eadcae] tracking-[4.5px]">
+        <h2 className="text-center text-[25.5px] leading-[1em] text-[#eadcae] tracking-[4.5px]">
           填写信息
         </h2>
       </div>
       <div>
-        <div className="w-[317.5px] h-[329px] m-auto relative overflow-hidden">
+        <div className="max-w-[317.5px] h-[329px] m-auto relative overflow-hidden">
           <div
             className="w-full h-full bg-no-repeat bg-center bg-contain absolute top-0 left-0"
             style={{
@@ -82,12 +82,12 @@ const Infomation = () => {
                     </div>
                   </div>
                 </div>
-                <div>
-                  <p className="text-[12px] text-gray-300 tracking-[2px] leading-[19px]">
-                    *请确保填写的手机号码真实有效，照片审核通过后，您将收到短信通知，作品也将在【首页】中展示
-                  </p>
-                </div>
               </form>
+            </div>
+            <div>
+              <p className="opacity-50 text-white scale-[0.8] text-[12px] tracking-[1.5px] leading-[22px]">
+                *请确保填写的手机号码真实有效，照片审核通过后，您将收到短信通知，作品也将在【首页】中展示
+              </p>
             </div>
           </div>
         </div>

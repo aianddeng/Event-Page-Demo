@@ -6,7 +6,7 @@ import demoPhoto2 from '../assets/demoPhoto2.png'
 import demoPhoto3 from '../assets/demoPhoto3.png'
 import demoPhoto4 from '../assets/demoPhoto4.png'
 import PhotoCard from '../components/PhotoCard'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 const UploadPhoto = () => {
   const [photoList] = useState([
@@ -24,16 +24,20 @@ const UploadPhoto = () => {
     },
   ])
 
+  const photoListData = useMemo(() => {
+    return photoList.length < 6 ? photoList.concat({}) : photoList
+  }, [photoList])
+
   return (
     <>
       <BackButton />
       <div className="my-[36px]">
-        <h2 className="text-center text-[25.5px] text-[#eadcae] tracking-[4.5px]">
+        <h2 className="text-center text-[25.5px] leading-[1em] text-[#eadcae] tracking-[4.5px]">
           上传照片
         </h2>
       </div>
       <div>
-        <div className="w-[262.5px] h-[329px] m-auto relative overflow-hidden">
+        <div className="max-w-[262.5px] h-[329px] m-auto relative overflow-hidden">
           <div
             className="w-full h-full bg-no-repeat bg-center bg-contain absolute top-0 left-0"
             style={{
@@ -41,10 +45,9 @@ const UploadPhoto = () => {
             }}
           >
             <div className="grid grid-cols-2 gap-[13px] px-[29.5px] py-[18px]">
-              {photoList.map((el) => (
-                <PhotoCard src={el.src} />
+              {photoListData.map((el, index) => (
+                <PhotoCard src={el.src} key={index} />
               ))}
-              {photoList.length < 6 && <PhotoCard />}
             </div>
           </div>
         </div>

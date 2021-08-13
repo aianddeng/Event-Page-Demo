@@ -17,8 +17,8 @@ export default function CardList() {
     <>
       <HeadTitle />
       <div className="grid grid-cols-2 gap-[8px] px-[22px] py-[13.5px]">
-        {cards.map((el) => (
-          <Card {...el} />
+        {cards.map((el, index) => (
+          <Card {...el} key={index} />
         ))}
       </div>
       <FixedButton text="赢取门票" fixed href="/collection" />
