@@ -5,11 +5,11 @@ const BackButton = () => {
   const history = useHistory()
 
   return (
-    <div className="h-[6.9vw]">
+    <div className="mx-[15.5px] mb-[10px] h-[28.5px] w-[37.5px]">
       <img
         src={backImg}
-        alt=""
-        className="h-full max-h-full"
+        alt="back"
+        className="h-full max-h-full w-full max-w-full"
         onClick={() => history.goBack()}
       />
     </div>

@@ -1,32 +1,27 @@
-import titlePng from '../assets/title.png'
 import photoPng from '../assets/photo.png'
 import Card from '../components/Card'
+import HeadTitle from '../components/HeadTitle'
 import FixedButton from '../components/FixedButton'
-import { useHistory } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function CardList() {
-  const history = useHistory()
-  const redirectLink = (link) => {
-    history.push(link)
-  }
+  const [cards] = useState(
+    Array(7).fill({
+      image: photoPng,
+      name: '陈欢',
+      like: 20,
+    })
+  )
 
   return (
-    <div className="space-y-5">
-      <div className="px-[5vw] pb-[1vw]">
-        <img src={titlePng} alt="" className="m-auto" />
+    <>
+      <HeadTitle />
+      <div className="grid grid-cols-2 gap-[8px] px-[22px] py-[13.5px]">
+        {cards.map((el) => (
+          <Card {...el} />
+        ))}
       </div>
-      <div className="grid grid-cols-2 gap-[2vw]">
-        <Card image={photoPng} name="陈欢" like={20} />
-        <Card image={photoPng} name="陈欢" like={20} />
-        <Card image={photoPng} name="陈欢" like={20} />
-        <Card image={photoPng} name="陈欢" like={20} />
-        <Card image={photoPng} name="陈欢" like={20} />
-      </div>
-      <FixedButton
-        text="赢取门票"
-        fixed
-        onClick={() => redirectLink('/collection')}
-      />
-    </div>
+      <FixedButton text="赢取门票" fixed href="/collection" />
+    </>
   )
 }

@@ -1,26 +1,29 @@
-import titlePng from '../assets/title.png'
-
 import FixedButton from '../components/FixedButton'
 import BorderBox from '../components/BorderBox'
 import BackButton from '../components/BackButton'
 import RuleLink from '../components/RuleLink'
+import HeadTitle from '../components/HeadTitle'
+import RulesBox from '../components/RulesBox'
+import { useCallback, useState } from 'react'
 
-const Wrapper = () => {
+const Collection = () => {
+  const [showRules, setShowRules] = useState(false)
+
+  const handleSwitchShown = useCallback(
+    () => setShowRules(!showRules),
+    [showRules]
+  )
+
   return (
     <>
-      <div>
-        <BackButton />
-      </div>
-      <div className="px-[5vw] pb-[1vw]">
-        <img src={titlePng} alt="" className="m-auto" />
-      </div>
-      <div>
-        <BorderBox />
-      </div>
-      <FixedButton text="上传照片" />
-      <RuleLink text="活动规则" link="#" />
+      <BackButton />
+      <HeadTitle />
+      <BorderBox />
+      <FixedButton text="上传照片" href="/upload" />
+      <RuleLink text="活动规则" onClick={() => handleSwitchShown()} />
+      <RulesBox showRules={showRules} onClick={() => handleSwitchShown()} />
     </>
   )
 }
 
-export default Wrapper
+export default Collection
